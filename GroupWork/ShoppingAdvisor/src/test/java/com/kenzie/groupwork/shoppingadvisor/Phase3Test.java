@@ -7,6 +7,7 @@ import com.kenzie.groupwork.shoppingadvisor.resources.SearchCategory;
 import com.kenzie.groupwork.shoppingadvisor.widget.AmazonsChoiceAdviserWidget;
 import com.kenzie.groupwork.shoppingadvisor.widget.ShoppingAdviserWidget;
 
+
 import com.kenzie.test.infrastructure.reflect.MethodInvoker;
 import com.kenzie.test.infrastructure.reflect.MethodQuery;
 import org.junit.jupiter.api.Test;

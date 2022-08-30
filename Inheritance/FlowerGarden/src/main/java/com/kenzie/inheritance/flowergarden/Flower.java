@@ -1,5 +1,7 @@
 package com.kenzie.inheritance.flowergarden;
 
+import java.util.Objects;
+
 /**
  * Class representing a variation of flowering plant, useful for garden planning.
  */
@@ -7,6 +9,7 @@ public class Flower {
     private String kind;
     private String coloration;
     private Planting planting;
+
 
     /**
      * Constructor populating the necessary Flower instance variables.
@@ -66,5 +69,20 @@ public class Flower {
     public String toString() {
         return String.format("Flower: {Kind: %s, Coloration: %s, Planting: %s}",
             kind, coloration, planting);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Flower flower = (Flower) o;
+        return kind.equals(flower.kind) &&
+                coloration.equals(flower.coloration) &&
+                planting == flower.planting;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(kind, coloration, planting);
     }
 }

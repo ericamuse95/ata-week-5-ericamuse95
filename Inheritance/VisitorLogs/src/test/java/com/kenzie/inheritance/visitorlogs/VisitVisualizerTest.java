@@ -45,7 +45,7 @@ public class VisitVisualizerTest {
         System.setOut(stdout);
         // and strip the header and formatting out of the visualization
         String output = capture.toString("UTF-8");
-        String noHeader = output.replaceFirst("^.*\n", "");
+        String noHeader = output.replaceFirst("^.*\\s", "");
         String strippedOutput = noHeader.replaceAll("[^@ X]", "");
 
         // THEN

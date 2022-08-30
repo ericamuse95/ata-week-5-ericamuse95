@@ -38,10 +38,14 @@ class SearchServiceClient {
 class EditorialServiceClient {
   + getEditorialRecommendedProducts(searchTerm : String, searchCategory : SearchCategory, marketplaceId : String) : List<EditorialRecommendedProduct>
 }
-
 class EditorialRecommendedProduct {
   - String recommendation
   - Product product
+}
+class EditorialAdviserWidget {
+  -EditorialRecommendedProduct
+  - EditorialServiceClient
+  +getEditorialRecommendedProducts
 }
 
 enum SearchCategory {
@@ -55,12 +59,16 @@ class ShoppingAdviserWidgetTestRenderer {
   + getRenderableContent(widget : AmazonsChoiceAdviserWidget) : String
 }
 
+
+
 ShoppingAdviserWidget *-- ShoppingContext
 ShoppingAdviserWidget <|-- AmazonsChoiceAdviserWidget
 AmazonsChoiceAdviserWidget *-- SearchServiceClient
 AmazonsChoiceAdviserWidget *-- AmazonsChoiceServiceClient
 ShoppingAdviserWidget -. ShoppingAdviserProduct: references
 EditorialServiceClient -. EditorialRecommendedProduct: references
+EditorialAdviserWidget *-- EditorialServiceClient: references
+EditorialAdviserWidget --|> ShoppingAdviserWidget
 AmazonsChoiceServiceClient -. AmazonChoiceProduct: references
 ShoppingAdviserWidgetTestRenderer -. AmazonsChoiceAdviserWidget: references
 ShoppingContext *-- SearchCategory
